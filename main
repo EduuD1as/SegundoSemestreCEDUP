@@ -1,0 +1,101 @@
+import javax.swing.JOptionPane;
+import java.text.DecimalFormat;
+
+public class main {
+
+    public static void main(String[] args) {
+
+        exercicio2();
+
+    }
+
+private static void exercicio2() {
+
+        DecimalFormat deci = new DecimalFormat("#.##");
+
+        String var;
+
+        float mediaCarro = 12;
+        float mediaMoto = 20;
+        float mediaCaminhao = 8;
+
+        var = JOptionPane.showInputDialog("Insira a distância (em km) do percurso: ");
+        float distancia = Float.parseFloat(var);
+
+        if (distancia < 0) {
+            JOptionPane.showMessageDialog(null, "A distância não pode ser um número negativo.");
+            var = JOptionPane.showInputDialog("Deseja tentar novamente? \n"
+                    + "1 - Sim \n"
+                    + "2 - Não");
+            int continuar1 = Integer.parseInt(var);
+
+            switch (continuar1) {
+                case 1:
+                    exercicio2();
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "Até mais!");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opção incorreta.");
+                    break;
+            }
+
+        } else {
+            var = JOptionPane.showInputDialog("Selecione o tipo de veículo: \n"
+                    + "1 - Carro (12km/l) \n"
+                    + "2 - Moto (20km/l)\n"
+                    + "3 - Caminhão (8km/l)");
+            int conversao = Integer.parseInt(var);
+
+            float combustivelCarro = distancia / mediaCarro;
+            float combustivelMoto = distancia / mediaMoto;
+            float combustivelCaminhao = distancia / mediaCaminhao;
+
+            switch (conversao) {
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Combustível gasto: " + (deci.format(combustivelCarro)) + "l");
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "Combustível gasto: " + (deci.format(combustivelMoto)) + "l");
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null,
+                            "Combustível gasto: " + (deci.format(combustivelCaminhao)) + "l");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opção inválida!");
+                    var = JOptionPane.showInputDialog("Quer tentar novamente? \n"
+                            + "1 - Sim \n"
+                            + "2 - Não");
+                    int continuar2 = Integer.parseInt(var);
+                    switch (continuar2) {
+                        case 1:
+                            exercicio2();
+                            break;
+                        case 2:
+                            JOptionPane.showMessageDialog(null, "Até mais!");
+                        default:
+                            JOptionPane.showMessageDialog(null, "Opção inválida.");
+                            break;
+                    }
+            }
+
+            var = JOptionPane.showInputDialog("Deseja calcular outro percurso? \n"
+                    + "1 - Sim \n"
+                    + "2 - Não");
+            int continuar3 = Integer.parseInt(var);
+
+            switch (continuar3) {
+                case 1:
+                    exercicio2();
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Até mais!");
+                    break;
+            }
+        }
+
+    }
+
+}
