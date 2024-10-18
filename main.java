@@ -35,7 +35,7 @@ class main {
             mediaPonderada += nota[i] * peso[i];
             }
             else {
-                JOptionPane.showMessageDialog(null, "A nota precisa estar entre 1 e 10.");
+                JOptionPane.showMessageDialog(null, "Insira uma nota válida.");
             }
         }
 
